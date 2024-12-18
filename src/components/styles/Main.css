@@ -1,0 +1,130 @@
+/* Main */
+.main {
+  margin: 3rem 0;
+}
+
+/* Min width */
+@media (min-width: 700px) {
+  .main {
+    padding: 2rem 5rem 0 5rem;
+  }
+}
+
+/* Max width */
+@media (max-width: 700px) {
+  .main {
+    padding: 2rem 2rem 0 2rem;
+  }
+}
+
+.form {
+  background-image: url(/images/bg-shorten-desktop.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: hsl(257, 27%, 26%);
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  column-gap: 10px;
+  position: relative;
+}
+
+.shorten-wrapper {
+  width: 100%;
+}
+
+.form-input {
+  width: 100%;
+  border-radius: 5px;
+  padding: 1rem 1rem;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  display: block;
+  border: 2px solid hsl(257, 27%, 26%);
+}
+
+.errorBorder {
+  border: 2px solid hsl(0, 87%, 67%);
+}
+.errorBorder::placeholder {
+  color: hsl(0, 87%, 67%);
+}
+
+.shortenBtn {
+  width: 20%;
+  height: 50px;
+  background-color: hsl(180, 66%, 49%);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  display: block;
+}
+
+.link-wrapper {
+  margin: 1rem 0;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.item-links {
+  display: flex;
+  column-gap: 10px;
+}
+
+.link-copy {
+  color: hsl(180, 66%, 49%);
+  align-self: center;
+}
+
+.linkBtn {
+  padding: 0.5rem 2rem;
+  background-color: hsl(180, 66%, 49%);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+}
+
+@media (max-width: 700px) {
+  .form {
+    background-size: contain;
+    background-position: 100% -30px;
+    background-image: url(/images/bg-shorten-mobile.svg);
+    flex-direction: column;
+    row-gap: 0.3rem;
+  }
+
+  .shortenBtn {
+    padding: 0.7rem 1rem;
+    width: 100%;
+  }
+
+  .link-wrapper {
+    flex-direction: column;
+    row-gap: 1rem;
+    align-items: start;
+    padding: 0;
+  }
+
+  .link-paste {
+    padding: 1rem;
+    width: 100%;
+    border-bottom: 1px solid hsl(0, 0%, 75%);
+  }
+  
+  .item-links {
+    padding: 1rem;
+    flex-direction: column;
+    row-gap: 10px;
+    width: 100%;
+  }
+
+  .link-copy {
+    align-self: start;
+  }
+}
