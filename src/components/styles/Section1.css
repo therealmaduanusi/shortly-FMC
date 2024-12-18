@@ -21,7 +21,7 @@
   height: 10px;
   width: 100%;
   position: relative;
-  bottom: 150px;
+  bottom: 215px;
   z-index: -1;
   background-color: hsl(180, 66%, 49%);
 }
@@ -83,6 +83,16 @@
 @media (min-width: 1024px) {
   .brand-detail-wrapper {
     column-gap: 20px;
+    margin-top: 10rem;
+    /* position: relative; */
+  }
+  .detail1 {
+    position: relative;
+    bottom: 100px;
+  }
+  .detail2 {
+    position: relative;
+    bottom: 50px;
   }
 }
 

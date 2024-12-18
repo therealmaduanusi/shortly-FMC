@@ -1,5 +1,6 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
+import axios from "axios"
 import "./styles/Main.css";
 function Main() {
   const [inputValue, setInputValue] = useState("");
@@ -10,7 +11,6 @@ function Main() {
   // Load links from session storage when the app loads
   useEffect(() => {
     const storedLinks = sessionStorage.getItem("shortenedLinks");
-    console.log(storedLinks);
     
     if (storedLinks) {
       setInputArr(JSON.parse(storedLinks))
@@ -20,26 +20,33 @@ function Main() {
   // Save links to session storage whenever they change
   useEffect(() => {
     sessionStorage.setItem("shortenedLinks", JSON.stringify(inputArr));
-    console.log("Saved to sessionStorage:", inputArr)
   }, [inputArr])
 
   /* =========  Handle Submit Button =========  */
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     if (inputValue === "") {
       setInputError(true);
       return;
     }
     try {
-      const newLlink = {
+      // Call the CleanURI API to shorten the URL
+      const response = await axios.post("https://cors-anywhere.herokuapp.com/https://cleanuri.com/api/v1/shorten", {
+        url: inputValue, // Required payload
+      });
+      const shortenLink = await response.data
+
+      const newLink = {
         original: inputValue,
-        short: 'shortURL'
+        short: shortenLink.result_url, // Shortened URL from the API response
+        // error: shortenLink.error, // Shortened URL from the API response for error
       }
       
       // Update the state with the new link
-      setInputArr([inputValue, ...inputArr]);
+      setInputArr([newLink, ...inputArr]);
       setInputValue(""); // Clear the input field
     } catch (error) {
+      alert("Error Shortening the Link, must be something like this: http://google.com/")
       console.error("Error Shortening the Link:", error)
     }
   }
@@ -86,8 +93,9 @@ function Main() {
         {inputArr.map((linkValue, i) => (
           <ShortenLinks
             key={i}
-            inputValue={linkValue}
-            onCopyLink={() => handleCopyLink(linkValue)}
+            inputValue={linkValue.original}
+            shortened={linkValue.short}
+            onCopyLink={() => handleCopyLink(linkValue.short)}
           />
         ))}
       </div>
@@ -96,12 +104,12 @@ function Main() {
 }
 
 /* =========  ShortenLinks Components =========  */
-function ShortenLinks({ inputValue, onCopyLink }) {
+function ShortenLinks({ inputValue, shortened, onCopyLink }) {
   return (
     <div className="link-wrapper">
       <p className="link-paste">{inputValue}</p>
       <div className="item-links">
-        <p className="link-copy">SomeURL...</p>
+        <p className="link-copy">{shortened}</p>
         <button className="linkBtn" onClick={onCopyLink}>
           Copy
         </button>
