@@ -9,7 +9,7 @@
 /* Max width */
 @media (max-width: 700px) {
   .header {
-    padding: 2rem 2rem 0 2rem;
+    padding: 1rem 0.5rem 0 0.5rem;
   }
 }
 
@@ -143,10 +143,10 @@
   }
   @keyframes height {
     from {
-      height: 0%;
+      height: 0;
     }
     to {
-      height: 21%;
+      height: 320px;
     }
   }
 
@@ -196,7 +196,6 @@
 
   .header-img-content {
     position: relative;
-    left: 5%;
     z-index: -1;
   }
   .heading {

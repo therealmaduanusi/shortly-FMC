@@ -32,10 +32,11 @@ function Main() {
     }
     try {
       // Call the CleanURI API to shorten the URL
-      const response = await axios.post("https://cors-anywhere.herokuapp.com/https://cleanuri.com/api/v1/shorten", {
+      const cors_api_url = 'https://cors-anywhere.herokuapp.com/'; // cors handler api
+      const response = await axios.post(`${cors_api_url}https://cleanuri.com/api/v1/shorten`, {
         url: inputValue, // Required payload
       });
-      const shortenLink = await response.data
+      const shortenLink = await response.data;
 
       const newLink = {
         original: inputValue,
