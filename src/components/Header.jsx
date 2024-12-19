@@ -2,7 +2,7 @@
 import logo from "/images/logo.svg";
 import headerContentImg from "/images/illustration-working.svg";
 
-import "./styles/Header.css";
+import "../styles/Header.css";
 
 function Header({ onIsOpen, onSetIsOpen }) {
   return (

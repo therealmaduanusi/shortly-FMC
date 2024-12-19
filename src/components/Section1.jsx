@@ -2,7 +2,8 @@ import iconBrandRecognition from "/images/icon-brand-recognition.svg";
 import iconDetailedRecords from "/images/icon-detailed-records.svg";
 import iconFullyCustomizable from "/images/icon-fully-customizable.svg";
 
-import "./styles/section1.css";
+import "../styles/Section1.css";
+
 function Section1() {
   return (
     <div className="Section1">

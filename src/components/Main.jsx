@@ -1,7 +1,8 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useState } from "react";
-import axios from "axios"
-import "./styles/Main.css";
+import axios from "axios";
+import "../styles/Main.css";
+
 function Main() {
   const [inputValue, setInputValue] = useState("");
   const [inputArr, setInputArr] = useState([]);

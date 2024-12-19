@@ -1,4 +1,4 @@
-import './styles/Section2.css'
+import "../styles/Section2.css";
 function Section2() {
   return (
     <div className="section2-wrapper">
