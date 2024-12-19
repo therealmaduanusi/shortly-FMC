@@ -60,8 +60,8 @@ function Section1() {
             customizable links, supercharging audience engagement.
           </p>
         </div>
+        <div className="hr"></div>
       </div>
-      <div className="hr"></div>
     </div>
   );
 }
