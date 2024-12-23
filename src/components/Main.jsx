@@ -7,6 +7,7 @@ function Main() {
   const [inputValue, setInputValue] = useState("");
   const [inputArr, setInputArr] = useState([]);
   const [inputError, setInputError] = useState(false);
+  const [copyLink, setCopyLink] = useState(false);
 
   /* =========  Session Storage =========  */
   // Load links from session storage when the app loads
@@ -63,7 +64,11 @@ function Main() {
   const handleCopyLink = (urlValue) => {
     // let inputValue = "Victor";
     navigator.clipboard.writeText(urlValue);
-    alert(`you copied ${urlValue}!`);
+    setCopyLink(true) // Change copy text and bg-color
+    setTimeout(()=>{
+      setCopyLink(false)
+    }, 5000)
+    // alert(`you copied ${urlValue}!`);
   };
 
   
@@ -98,6 +103,7 @@ function Main() {
             inputValue={linkValue.original}
             shortened={linkValue.short}
             onCopyLink={() => handleCopyLink(linkValue.short)}
+            copyLink={copyLink}
           />
         ))}
       </div>
@@ -106,14 +112,14 @@ function Main() {
 }
 
 /* =========  ShortenLinks Components =========  */
-function ShortenLinks({ inputValue, shortened, onCopyLink }) {
+function ShortenLinks({ inputValue, shortened, onCopyLink, copyLink }) {
   return (
     <div className="link-wrapper">
       <p className="link-paste">{inputValue}</p>
       <div className="item-links">
         <p className="link-copy">{shortened}</p>
-        <button className="linkBtn" onClick={onCopyLink}>
-          Copy
+        <button className={`linkBtn ${copyLink && `linkBtn-copied`}`} onClick={onCopyLink}>
+          {copyLink ? "Copied!" : "Copy"}
         </button>
       </div>
     </div>

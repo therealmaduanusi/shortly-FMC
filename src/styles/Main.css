@@ -90,6 +90,10 @@
   color: #fff;
 }
 
+.linkBtn-copied {
+  background-color: hsl(257, 27%, 26%);
+}
+
 @media (max-width: 870px) {
   .form {
     background-size: contain;
