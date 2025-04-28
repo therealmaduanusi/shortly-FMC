@@ -6,7 +6,7 @@ import "../styles/Section1.css";
 
 function Section1() {
   return (
-    <div className="Section1">
+    <section className="Section1">
       <h2 className="section1-heading">Advanced Statistics</h2>
       <p className="section1-paragrah">
         Track how your links are performing across the web with our advanced
@@ -63,7 +63,7 @@ function Section1() {
         </div>
         <div className="hr"></div>
       </div>
-    </div>
+    </section>
   );
 }
 

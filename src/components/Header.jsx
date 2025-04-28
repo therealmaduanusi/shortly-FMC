@@ -14,17 +14,17 @@ function Header({ onIsOpen, onSetIsOpen }) {
         <div className={`nav-menu ${onIsOpen ? "" : "nav-menu-display"}`}>
           <ul className="nav-list-ul">
             <li className="nav-lists">
-              <a href="#" className="nav-links">
+              <a href="#" aria-label="Read more about features" className="nav-links">
                 Feature
               </a>
             </li>
             <li className="nav-lists">
-              <a href="#" className="nav-links">
+              <a href="#" aria-label="Read more about pricing" className="nav-links">
                 Pricing
               </a>
             </li>
             <li className="nav-lists">
-              <a href="#" className="nav-links">
+              <a href="#" aria-label="Read more about resources" className="nav-links">
                 Resources
               </a>
             </li>
