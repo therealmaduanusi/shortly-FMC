@@ -61,6 +61,7 @@ Mobile Navigation
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
+- [Axios](https://reactjs.org/) - APIs library
 
 
 ### What I learned
@@ -69,29 +70,36 @@ Use this section to recap over some of your major learnings while working throug
 
 To see how you can add code snippets, see below:
 
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
-}
-```
 ```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+try {
+  // Call the CleanURI API to shorten the URL
+  const cors_api_url = 'https://cors-anywhere.herokuapp.com/'; // cors handler api
+  const response = await axios.post(`${cors_api_url}https://cleanuri.com/api/v1/shorten`, {
+    url: inputValue, // Required payload
+  });
+  const shortenLink = await response.data;
+
+  const newLink = {
+    original: inputValue,
+    short: shortenLink.result_url, // Shortened URL from the API response
+    // error: shortenLink.error, // Shortened URL from the API response for error
+  }
+  
+  // Update the state with the new link
+  setInputArr([newLink, ...inputArr]);
+  setInputValue(""); // Clear the input field
+} catch (error) {
+  alert("Error Shortening the Link, must be something like this: http://google.com/")
+  console.error("Error Shortening the Link:", error)
 }
 ```
 
 If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I want to be able in handling CORS technique for APIs handling.
 
 ### Useful resources
 
