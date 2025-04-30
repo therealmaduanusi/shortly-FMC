@@ -33,18 +33,21 @@ Users should be able to:
 
 ### Screenshot
 Desktop Desgin
+
 ![Desktop Desgin](./design/desktop-design.jpg)
 
 
 Desktop Active State
+
 ![Desktop Active State](./design/desktop-active-states.jpg)
 
-
 Mobile Design
+
 ![Mobile Design](./design/mobile-design.jpg)
 
 
 Mobile Navigation
+
 ![Mobile Navigation](./design/mobile-navigation.jpg)
 
 
@@ -63,7 +66,7 @@ Mobile Navigation
 - CSS Grid
 - Mobile-first workflow
 - [React](https://reactjs.org/) - JS library
-- [Axios](https://reactjs.org/) - APIs library
+- [Axios](https://axios-http.com/docs/intro) - APIs library
 
 
 ### What I learned
