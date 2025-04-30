@@ -33,9 +33,10 @@ function Main() {
     }
     try {
       // Call the CleanURI API to shorten the URL
-      const cors_api_url = 'https://cors-anywhere.herokuapp.com/'; // cors handler api
-      const response = await axios.post(`${cors_api_url}https://cleanuri.com/api/v1/shorten`, {
-        url: inputValue, // Required payload
+      // const cors_api_url = 'https://cors-anywhere.herokuapp.com/'; // cors handler api
+      const proxy_api = 'https://proxy-api-sigma.vercel.app' // proxy api
+      const response = await axios.post(`${proxy_api}/shorten`, {
+        url: inputValue,
       });
       const shortenLink = await response.data;
 
@@ -96,7 +97,7 @@ function Main() {
         </div>
         <button className="shortenBtn">Shorten It!</button>
       </form>
-      <div className="links-wrapper">
+      <>
         {inputArr.map((linkValue, i) => (
           <ShortenLinks
             key={i}
@@ -106,7 +107,7 @@ function Main() {
             copyLink={copyLink}
           />
         ))}
-      </div>
+      </>
     </main>
   );
 }

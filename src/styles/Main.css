@@ -68,8 +68,13 @@
   padding: 1rem;
   border-radius: 5px;
   display: flex;
+  gap: 1rem;
   justify-content: space-between;
   align-items: center;
+}
+
+.link-paste {
+  word-break: break-all;
 }
 
 .item-links {
@@ -110,7 +115,6 @@
 
   .link-wrapper {
     flex-direction: column;
-    row-gap: 1rem;
     align-items: start;
     padding: 0;
   }
