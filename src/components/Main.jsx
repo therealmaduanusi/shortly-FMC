@@ -7,7 +7,8 @@ function Main() {
   const [inputValue, setInputValue] = useState("");
   const [inputArr, setInputArr] = useState([]);
   const [inputError, setInputError] = useState(false);
-  const [copyLink, setCopyLink] = useState(false);
+  const [copiedIndex, setCopiedIndex] = useState(null);
+
 
   /* =========  Session Storage =========  */
   // Load links from session storage when the app loads
@@ -62,12 +63,12 @@ function Main() {
   }
 
   /* =========  Handle Clipboard Button =========  */
-  const handleCopyLink = (urlValue) => {
+  const handleCopyLink = (urlValue, index) => {
     // let inputValue = "Victor";
     navigator.clipboard.writeText(urlValue);
-    setCopyLink(true) // Change copy text and bg-color
+    setCopiedIndex(index); // Set the copied index
     setTimeout(()=>{
-      setCopyLink(false)
+      setCopiedIndex(null); // Reset after 5s
     }, 5000)
     // alert(`you copied ${urlValue}!`);
   };
@@ -103,8 +104,8 @@ function Main() {
             key={i}
             inputValue={linkValue.original}
             shortened={linkValue.short}
-            onCopyLink={() => handleCopyLink(linkValue.short)}
-            copyLink={copyLink}
+            onCopyLink={() => handleCopyLink(linkValue.short, i)}
+            isCopied={copiedIndex === i}
           />
         ))}
       </>
@@ -113,14 +114,14 @@ function Main() {
 }
 
 /* =========  ShortenLinks Components =========  */
-function ShortenLinks({ inputValue, shortened, onCopyLink, copyLink }) {
+function ShortenLinks({ inputValue, shortened, onCopyLink, isCopied }) {
   return (
     <div className="link-wrapper">
       <p className="link-paste">{inputValue}</p>
       <div className="item-links">
         <p className="link-copy">{shortened}</p>
-        <button className={`linkBtn ${copyLink && `linkBtn-copied`}`} onClick={onCopyLink}>
-          {copyLink ? "Copied!" : "Copy"}
+        <button className={`linkBtn ${isCopied && `linkBtn-copied`}`} onClick={onCopyLink}>
+          {isCopied ? "Copied!" : "Copy"}
         </button>
       </div>
     </div>
